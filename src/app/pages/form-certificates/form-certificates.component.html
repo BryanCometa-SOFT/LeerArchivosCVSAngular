@@ -1,0 +1,49 @@
+<section class="bg-green-dark pb-3 py-lg-0 sizePage">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row">
+    <div class="col-12 px-5 pt-5">
+      <!--Formulario-->
+      <div class="card mt-5 py-5  px-4 px-md-5 border-radius-card border-0 shadow">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-between">
+            <h4 class="text-purple font-weight-bold bold">
+              Crear eventos
+            </h4>
+          </div>
+        </div>
+        <div class="row py-2">
+          <div class="col-12 d-flex flex-column">
+            <label for="name" class="text-purple font-weight-bold mb-0 bold"
+              >Adjunte Cvs</label
+            >
+            <input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" />
+          </div>
+        </div>
+        <div class="row py-2">
+          <div class="col-12 d-flex justify-content-end" *ngIf="form.invalid">
+            <b class="text-danger">Todos los campos son obligatorios</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 d-flex justify-content-between">
+        <button
+          class="d-flex justify-content-center align-items-center rounded size-circle-next-previus border-purple rounded-circle"
+        >
+          <i
+            class="bi bi-arrow-left-short text-purple size-icon-next-previus"
+          ></i>
+        </button>
+        <button
+          class="rounded-pill btn-next border-0"
+          type="submit"
+          [disabled]="form.invalid"
+          [ngClass]="
+            form.invalid ? 'bg-purple-black text-white font-weight-bold' : 'bg-purple text-white'
+          "
+        >
+          Continuar
+        </button>
+      </div>
+    </div>
+  </form>
+</section>
